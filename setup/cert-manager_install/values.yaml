@@ -1,0 +1,15 @@
+##https://github.com/cert-manager/cert-manager/blob/master/deploy/charts/cert-manager/values.yaml
+
+# Optional additional labels to add to the controller Pods.
+podLabels:
+  azure.workload.identity/use: "true"
+  
+  
+serviceAccount:
+  # Specifies whether a service account should be created.
+  create: true
+  
+  # Optional additional labels to add to the webhook's Service Account.
+  # +docs:property
+  labels:
+    azure.workload.identity/use: "true"

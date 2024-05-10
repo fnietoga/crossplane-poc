@@ -1,0 +1,34 @@
+apiVersion: storage.azure.upbound.io/v1beta1
+kind: Account
+metadata:
+  # annotations:
+  #   meta.upbound.io/example-id: storage/v1beta1/datalakegen2path
+  # labels:
+  #   testing.upbound.io/example-name: example
+  name: stawedtestapp01
+spec:
+  initProvider: #for fields that are required on creation, but we do not desire to update them after creation
+    location: westeurope
+    accountKind: StorageV2
+    accountTier: Standard
+    accountReplicationType: ZRS
+  forProvider:
+    resourceGroupNameSelector:
+      matchLabels:
+        app-name: testapp01
+        resource-group-type: environment
+        resource-group-environment: dev
+    #resourceGroupName: RG-WE-D-TESTAPP-01
+    accessTier: Hot
+    allowNestedItemsToBePublic: false
+    isHnsEnabled: false
+    defaultToOauthAuthentication: true
+    sharedAccessKeyEnabled: true
+    localUserEnabled: false
+    enableHttpsTrafficOnly: true
+    minTlsVersion: TLS1_2
+    publicNetworkAccessEnabled: true
+    sftpEnabled: false
+  providerConfigRef:
+    name: testapp01-umi
+    

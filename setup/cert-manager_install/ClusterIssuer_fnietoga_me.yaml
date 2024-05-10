@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: fnietoga@gmail.com
+    preferredChain: "ISRG Root X1"
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+    - dns01:
+        azureDNS:
+          hostedZoneName: poc.fnietoga.me
+          resourceGroupName: fnietoga.me
+          subscriptionID: 841bc417-7db7-4e2e-82d3-c80bd04ab305
+          environment: AzurePublicCloud
+          managedIdentity:
+            clientID: b743814d-ac43-4983-a1e3-be15b1c776c7

@@ -1,0 +1,22 @@
+##https://github.com/crossplane/crossplane/blob/master/cluster/charts/crossplane/values.yaml
+# helm-docs renders these comments into markdown. Use markdown formatting where
+# appropiate.
+#
+# -- The number of Crossplane pod `replicas` to deploy.
+replicas: 1
+
+provider:
+  # -- A list of Provider packages to install.
+  packages: []
+
+# -- Add custom arguments to the Crossplane pod.
+args:
+    - --enable-composition-functions
+    - --enable-composition-functions-extra-resources
+    - --enable-composition-webhook-schema-validation
+    - --enable-deployment-runtime-configs
+    - --enable-environment-configs
+    - --enable-external-secret-stores
+    - --enable-realtime-compositions
+    - --enable-ssa-claims
+    - --enable-usages

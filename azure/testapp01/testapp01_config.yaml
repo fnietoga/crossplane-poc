@@ -1,0 +1,37 @@
+# https://github.com/crossplane-contrib/provider-upjet-azure/blob/main/examples/azure/user-assigned-managed-identity.yaml
+# SPDX-FileCopyrightText: 2024 The Crossplane Authors <https://crossplane.io>
+#
+# SPDX-License-Identifier: CC0-1.0
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: testapp01
+---
+apiVersion: azure.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: testapp01-umi ##ProviderConfig resources is not namespaced
+spec:
+  credentials:
+    source: OIDCTokenFile
+    # source: UserAssignedManagedIdentity
+  oidcTokenFilePath: /var/run/secrets/azure/tokens/azure-identity-token
+  clientID: d72ddf15-a8db-445a-80c4-7769b13b30c2
+  subscriptionID: 841bc417-7db7-4e2e-82d3-c80bd04ab305
+  tenantID: 613c9f59-45bd-41b1-8e2a-e7736e788431
+---
+apiVersion: azure.upbound.io/v1beta1
+kind: ResourceGroup
+metadata:
+  name: rg-we-d-testapp-01
+  labels:
+    app-name: testapp01
+    resource-group-type: environment
+    resource-group-environment: dev
+  annotations:
+    crossplane.io/external-name: RG-WE-D-TESTAPP-01
+spec:
+  managementPolicies: ["Observe"]
+  forProvider: {}
+  providerConfigRef:
+    name: testapp01-umi

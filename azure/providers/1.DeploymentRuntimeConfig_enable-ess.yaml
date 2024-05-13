@@ -11,7 +11,9 @@ spec:
           labels:
             azure.workload.identity/use: "true"
         spec:
+          serviceAccountName: crossplain-azure-deploy
           containers:
             - name: package-runtime
               args:
                 - --enable-external-secret-stores
+                - --enable-management-policies

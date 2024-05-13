@@ -5,8 +5,9 @@
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
 
+$installpath = "C:/code/fnietoga/crossplane-poc/setup/argocd_install"
 helm upgrade --install argocd `
 --namespace argocd `
 --create-namespace `
--f C:\code\fnietoga\crossplane\argocd_install\values.yaml `
+-f $installpath/values.yaml `
 argo/argo-cd

@@ -4,9 +4,10 @@
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
 
+$installpath = "C:/code/fnietoga/crossplane-poc/setup/nginx_install"
 helm upgrade --install nginx `
 --namespace nginx `
 --create-namespace `
--f C:\code\fnietoga\crossplane\nginx_install\values.yaml `
+-f $installpath/values.yaml `
 ingress-nginx/ingress-nginx
 

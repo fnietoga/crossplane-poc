@@ -4,12 +4,13 @@
 helm repo add jetstack https://charts.jetstack.io --force-update
 helm repo update
 
+$installpath = "C:/code/fnietoga/crossplane-poc/setup/cert-manager_install"
 helm upgrade --install cert-manager `
 --namespace cert-manager `
 --create-namespace `
 --version v1.14.5 `
 --set installCRDs=true `
--f C:\code\fnietoga\crossplane\cert-manager_install\values.yaml `
+-f $installpath/values.yaml `
 jetstack/cert-manager
 
 
@@ -38,4 +39,4 @@ az identity federated-credential create `
   --issuer $SERVICE_ACCOUNT_ISSUER `
   --subject "system:serviceaccount:$($SERVICE_ACCOUNT_NAMESPACE):$($SERVICE_ACCOUNT_NAME)"
   
-kubectl apply -f C:\code\fnietoga\crossplane\cert-manager_install\ClusterIssuer_fnietoga_me.yaml
+kubectl apply -f $installpath/ClusterIssuer_fnietoga_me.yaml

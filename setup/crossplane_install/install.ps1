@@ -4,17 +4,20 @@
 helm repo add crossplane-stable https://charts.crossplane.io/stable
 helm repo update
 
+$installpath = "C:/code/fnietoga/crossplane-poc/setup/crossplane_install"
 helm upgrade --install crossplane `
 --namespace crossplane-system `
 --create-namespace `
--f C:\code\fnietoga\crossplane\crossplane_install\values.yaml `
+-f $installpath/values.yaml `
 crossplane-stable/crossplane
 
-kubectl apply -f C:\code\fnietoga\crossplane\crossplane_install\azure\providers\0.DeploymentRuntimeConfig_enable-ess.yaml
-kubectl apply -f C:\code\fnietoga\crossplane\crossplane_install\azure\providers\family-azure.yaml
-kubectl apply -f C:\code\fnietoga\crossplane\crossplane_install\azure\providers\azure-management.yaml
-kubectl apply -f C:\code\fnietoga\crossplane\crossplane_install\azure\providers\azure-storage.yaml
-kubectl apply -f C:\code\fnietoga\crossplane\crossplane_install\azure\providers\azure-keyvault.yaml
+$rootpath = "C:/code/fnietoga/crossplane-poc/azure"
+kubectl apply -f $rootpath/providers/0.ServiceAccount.yaml
+kubectl apply -f $rootpath/providers/1.DeploymentRuntimeConfig_enable-ess.yaml
+kubectl apply -f $rootpath/providers/family-azure.yaml
+kubectl apply -f $rootpath/providers/azure-management.yaml
+kubectl apply -f $rootpath/providers/azure-storage.yaml
+kubectl apply -f $rootpath/providers/azure-keyvault.yaml
 
-kubectl apply -f C:\code\fnietoga\crossplane\crossplane_install\azure\testapp01\testapp01_config.yaml
-kubectl apply -f C:\code\fnietoga\crossplane\crossplane_install\azure\testapp02\testapp02_config.yaml
+kubectl apply -f $rootpath/testapp01/testapp01_config.yaml
+kubectl apply -f $rootpath/testapp02/testapp02_config.yaml

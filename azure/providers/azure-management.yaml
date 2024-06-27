@@ -3,6 +3,6 @@ kind: Provider
 metadata:
   name: provider-azure-management
 spec:
-  package: xpkg.upbound.io/upbound/provider-azure-management:v1.1.0
+  package: xpkg.upbound.io/upbound/provider-azure-management:v1.3.0
   runtimeConfigRef:
     name: enable-ess

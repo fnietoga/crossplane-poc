@@ -3,6 +3,6 @@ kind: Provider
 metadata:
   name: provider-azure-storage
 spec:
-  package: xpkg.upbound.io/upbound/provider-azure-storage:v1.1.0
+  package: xpkg.upbound.io/upbound/provider-azure-storage:v1.3.0
   runtimeConfigRef:
     name: enable-ess

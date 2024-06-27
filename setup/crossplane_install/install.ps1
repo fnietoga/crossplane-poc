@@ -19,5 +19,4 @@ kubectl apply -f $rootpath/providers/azure-management.yaml
 kubectl apply -f $rootpath/providers/azure-storage.yaml
 kubectl apply -f $rootpath/providers/azure-keyvault.yaml
 
-kubectl apply -f $rootpath/testapp01/testapp01_config.yaml
-kubectl apply -f $rootpath/testapp02/testapp02_config.yaml
+

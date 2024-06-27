@@ -15,11 +15,11 @@ jetstack/cert-manager
 
 
 ##Azure Managed Identity as workload identity
-$AZURE_DEFAULTS_GROUP = "RSG-WE-T-AKS-01"
-$CLUSTER_NAME = "aks-we-t-tests-01"
+$AZURE_DEFAULTS_GROUP = "RG-WE-D-AKS-01"
+$CLUSTER_NAME = "aks-we-d-tests-01"
 az aks update --name $CLUSTER_NAME --resource-group $AZURE_DEFAULTS_GROUP --enable-oidc-issuer  --enable-workload-identity
 
-$IDENTITY_NAME = "umi-we-t-aks-cert-manager-01"
+$IDENTITY_NAME = "umi-we-d-aks-cert-manager-01"
 $DOMAIN_NAME = "poc.fnietoga.me"
 $DNS_RESOURCE_GROUP = "fnietoga.me"
 az identity create --name $IDENTITY_NAME --resource-group $AZURE_DEFAULTS_GROUP

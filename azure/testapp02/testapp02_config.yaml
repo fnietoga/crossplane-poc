@@ -16,16 +16,16 @@ spec:
     source: OIDCTokenFile
     # source: UserAssignedManagedIdentity
   oidcTokenFilePath: /var/run/secrets/azure/tokens/azure-identity-token
-  clientID: 80589944-29c2-4f00-808f-b533b9986fb8
-  subscriptionID: 841bc417-7db7-4e2e-82d3-c80bd04ab305
-  tenantID: 613c9f59-45bd-41b1-8e2a-e7736e788431
+  clientID: #{clientID}#
+  subscriptionID: #{subscriptionID}#
+  tenantID: #{tenantID}#
 ---
 apiVersion: azure.upbound.io/v1beta1
 kind: ResourceGroup
 metadata:
   name: testapp02
   annotations:
-    crossplane.io/external-name: RG-WE-D-TESTAPP-02
+    crossplane.io/external-name: #{resourceGroupId}#
 spec:
   managementPolicies: ["Observe"]
   forProvider: {}
